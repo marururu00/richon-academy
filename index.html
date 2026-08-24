@@ -4,10 +4,9 @@
   리치온 아카데미 홈페이지 · 교체 가이드 (REPLACE GUIDE)
   ▸ {{구글폼URL}} {{블로그URL}} {{카페URL}} {{유튜브URL}} {{오픈채팅URL}} {{입금계좌}}
     를 "찾아 바꾸기"로 실제 값으로 교체하세요.
-  ▸ "강의 신청" 버튼은 richon-apply-ver5.html(신청·결제 페이지)로 연결됩니다.
+  ▸ "강의 신청" 버튼은 apply.html(신청·결제 페이지)로 연결됩니다.
   ▸ 이미지는 파일 안에 포함되어 있어 따로 둘 필요 없이 어디서든 표시됩니다.
-  ▸ 월간 일정: 아래 <script>의 EVENTS 배열만 수정.
-  ▸ 배포: richon-homepage.html + richon-briefing.html + richon-apply-ver5.html 세 파일을 같은 폴더에 두고 Vercel/Netlify 업로드.
+  ▸ 배포: index.html + apply.html 두 파일을 같은 폴더(저장소 최상단)에 두세요.
   ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="ko">
@@ -314,11 +313,35 @@
     .reveal{opacity:1;transform:none;transition:none}
     .pcard:hover,.fcard:hover,.tcard:hover,.rcard:hover,.btn:hover{transform:none}
   }
+
+  /* ===== 하단 플로팅 신청 바 ===== */
+  .ctabar{position:fixed;left:0;right:0;bottom:0;z-index:80;
+    background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);
+    border-top:1px solid #e6e3db;box-shadow:0 -10px 30px -20px rgba(0,0,0,.35);
+    transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .ctabar.show{transform:none}
+  .ctabar-in{max-width:1120px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:16px}
+  .ctabar .cb-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .ctabar .cb-title{font-size:15px;font-weight:800;color:#1c1f26;letter-spacing:-.01em}
+  .ctabar .cb-sub{font-size:12.5px;color:#6b6353}
+  .ctabar .cb-btns{margin-left:auto;display:flex;gap:10px;flex-shrink:0}
+  .ctabar .cb-btns a{border-radius:10px;padding:13px 22px;font-weight:800;font-size:14px;white-space:nowrap;transition:.2s}
+  .ctabar .cb-brief{background:#fdf9f0;color:#b07d1e;border:1px solid #e2d7ba}
+  .ctabar .cb-brief:hover{background:#f7edda}
+  .ctabar .cb-apply{background:var(--orange);color:#fff}
+  .ctabar .cb-apply:hover{background:var(--orange-2,#e06a15);transform:translateY(-2px)}
+  body{padding-bottom:74px}
+  @media(max-width:600px){
+    .ctabar-in{padding:10px 14px;gap:10px}
+    .ctabar .cb-sub{display:none}
+    .ctabar .cb-brief{display:none}
+    .ctabar .cb-btns a{padding:12px 16px;font-size:13px}
+  }
 </style>
 </head>
 <body>
 
-<div class="announce">☆무료 브리핑 다시보기 오픈☆ 무료 브리핑 중 1개를 샘플 영상으로 먼저 확인하세요 — <a href="richon-briefing.html">바로가기 →</a></div>
+
 
 <nav>
   <a class="logo" href="#top"><span class="r">RICH</span><span class="o">ON</span><small>ESTATE STUDY</small></a>
@@ -331,7 +354,7 @@
   </div>
   <div class="nav-right">
     <a class="btn btn-line" href="{{오픈채팅URL}}" target="_blank" rel="noopener">오픈카톡방</a>
-    <a class="btn btn-o" href="richon-apply-ver5.html">강의 신청</a>
+    <a class="btn btn-o" href="apply.html">강의 신청</a>
     <button class="burger" id="burger" aria-label="메뉴"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -344,8 +367,7 @@
       <p class="sub reveal">경매만, 재개발만, 분양권만 보는 것이 아니라 시장 흐름과 지역 상황에 따라 가장 유리한 투자법을 선택해야 합니다.</p>
       <p class="sub reveal">리치온 아카데미는 경매 / 재개발 / 분양권 / 갭투자를 하나의 실전 투자 프레임으로 연결합니다.</p>
       <div class="btns reveal">
-        <a class="btn btn-o" href="richon-briefing.html">무료 브리핑 보기 →</a>
-        <a class="btn btn-gold" href="richon-apply-ver5.html">강의 신청하기</a>
+        <a class="btn btn-gold" href="apply.html">강의 신청하기</a>
       </div>
       
     </div>
@@ -378,7 +400,7 @@
       <article class="proof-card dark reveal">
         <div class="proof-label">짧은 수강 후기</div>
         <h3>“단순 정보보다, 지금 무엇을 봐야 하는지 기준이 생겼습니다.”</h3>
-        <p>무료 브리핑으로 시장을 보는 관점을 먼저 확인하고, 정규 스터디에서 경매·재개발·갭투자 판단 기준을 체계적으로 이어갈 수 있습니다.</p>
+        <p>정규 스터디에서 경매·재개발·갭투자 판단 기준을 체계적으로 세울 수 있습니다.</p>
         <div class="proof-note">더 많은 사례 보기 영역은 후기/성과가 충분히 쌓인 뒤 연결합니다.</div>
       </article>
     </div>
@@ -412,19 +434,9 @@
   <div class="wrap">
     <p class="sec-eyebrow reveal">Programs</p>
     <h2 class="sec-title reveal">리치온 정규 프로그램</h2>
-    <p class="sec-lead reveal">무료 브리핑으로 리치온의 관점을 먼저 확인하고, 필요한 주제는 정규 강의에서 체계적으로 이어가세요. 각 과정은 모집 상태에 따라 신청 가능 여부가 달라집니다.</p>
+    <p class="sec-lead reveal">입문부터 심화까지, 필요한 주제를 골라 체계적으로 이어가세요. 각 과정은 모집 상태에 따라 신청 가능 여부가 달라집니다.</p>
 
     <div class="cards">
-      <article class="pcard reveal" style="--cat:#b8a888">
-        <div class="pthumb ph"><span class="pl">무료 브리핑</span></div>
-        <div class="cbody">
-          <div class="meta"><div class="when">매주 월요일 21:00 · ZOOM</div><span class="status open">상시</span></div>
-          <h3>무료 브리핑 <span class="free-badge">무료</span></h3>
-          <p>그 주의 시장 흐름과 경매/재개발 핵심 이슈를 정리하는 브리핑. 라이브는 오픈카톡방에서, 놓친 회차는 다시보기 아카이브에서 확인하세요.</p>
-          <div class="tags"><span>시장동향</span><span>경매</span><span>재개발</span></div>
-          <div class="acts"><a class="a-apply" href="richon-briefing.html">무료 브리핑 보기 →</a><a class="a-blog" href="{{오픈채팅URL}}" target="_blank" rel="noopener">무료 브리핑 링크 받기</a></div>
-        </div>
-      </article>
 
       <article class="pcard reveal" style="--cat:#3aa657">
         <div class="pthumb ph"><span class="pl">Pre리치온</span></div>
@@ -433,7 +445,7 @@
           <h3>Pre리치온 (프리리치온)</h3>
           <p>투자원칙, 갭투자, 서울 초기재개발, 시장구조까지. 처음 시작하는 분이 시장을 읽는 기초 프레임을 세우는 과정.</p>
           <div class="tags"><span>투자원칙</span><span>갭투자</span><span>시장구조</span></div>
-          <div class="acts"><a class="a-apply" href="richon-apply-ver5.html?course=pre">신청하기 →</a><a class="a-blog" href="{{블로그URL}}" target="_blank" rel="noopener">소개 ↗</a></div>
+          <div class="acts"><a class="a-apply" href="apply.html?course=pre">신청하기 →</a><a class="a-blog" href="{{블로그URL}}" target="_blank" rel="noopener">소개 ↗</a></div>
         </div>
       </article>
 
@@ -444,7 +456,7 @@
           <h3>리치온 스터디</h3>
           <p>현금흐름, 갭투자, 서울 초기재개발, 경매 등 매주 실전 주제로 깊이 파고드는 핵심 스터디.</p>
           <div class="tags"><span>현금흐름</span><span>경매</span><span>실전</span></div>
-          <div class="acts"><a class="a-apply" href="richon-apply-ver5.html?course=study">신청하기 →</a><a class="a-blog" href="{{블로그URL}}" target="_blank" rel="noopener">소개 ↗</a></div>
+          <div class="acts"><a class="a-apply" href="apply.html?course=study">신청하기 →</a><a class="a-blog" href="{{블로그URL}}" target="_blank" rel="noopener">소개 ↗</a></div>
         </div>
       </article>
 
@@ -455,7 +467,7 @@
           <h3>재개발 중급반</h3>
           <p>정밀한 입지 분석과 인프라 변화 예측으로 수도권 주요 재개발/재건축 단지를 공략하는 심화 과정.</p>
           <div class="tags"><span>재개발</span><span>재건축</span><span>입지분석</span></div>
-          <div class="acts"><a class="a-wait" href="richon-apply-ver5.html?course=redev">알림 신청</a><a class="a-blog" href="{{블로그URL}}" target="_blank" rel="noopener">소개 ↗</a></div>
+          <div class="acts"><a class="a-wait" href="apply.html?course=redev">알림 신청</a><a class="a-blog" href="{{블로그URL}}" target="_blank" rel="noopener">소개 ↗</a></div>
         </div>
       </article>
 
@@ -484,18 +496,7 @@
   </div>
 </section>
 
-<section class="block" id="schedule">
-  <div class="wrap">
-    <p class="sec-eyebrow reveal">Schedule</p>
-    <h2 class="sec-title reveal">리치온 캘린더</h2>
-    <p class="sec-lead reveal">요일별 정규 프로그램 일정입니다. 모집중인 강의와 이번 달 주요 일정을 확인하고 신청하세요.</p>
-    <div class="cal reveal">
-      <div class="cal-legend" id="calLegend"></div>
-      <div class="cal-grid" id="calGrid"></div>
-      <div class="cal-list" id="calList"></div>
-    </div>
-  </div>
-</section>
+
 
 <section class="block light" id="instructor">
   <div class="wrap inst">
@@ -520,11 +521,10 @@
 
 <section class="block cta">
   <div class="wrap">
-    <h2>리치온의 관점을 먼저 확인하고,<br>필요한 강의로 이어가세요</h2>
-    <p>무료 브리핑 다시보기에서 샘플 영상으로 관점을 확인한 뒤, 정규 프로그램에서 체계적으로 이어갈 수 있습니다.</p>
+    <h2>지금 필요한 강의부터<br>시작하세요</h2>
+    <p>시장 흐름부터 물건 검증까지, 정규 프로그램에서 체계적으로 이어갈 수 있습니다.</p>
     <div class="btns">
-      <a class="btn btn-o" href="richon-briefing.html">무료 브리핑 보기</a>
-      <a class="btn btn-gold" href="richon-apply-ver5.html">강의 신청하기</a>
+      <a class="btn btn-gold" href="apply.html">강의 신청하기</a>
       <a class="btn btn-line" href="{{오픈채팅URL}}" target="_blank" rel="noopener">오픈채팅방 바로가기</a>
     </div>
   </div>
@@ -555,32 +555,6 @@
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
 
-  /* ===== 월간 일정: 이 부분만 수정하면 캘린더와 모바일 리스트가 함께 갱신됩니다 ===== */
-  const CAL_YEAR=2026, CAL_MONTH=6;
-  const CATS={'무료 브리핑':'#b8a888','리치온 인테리어':'#e8a13a','재개발 중급반':'#3b6fd1','Pre리치온':'#3aa657','리치온 스터디':'#e0483c','청약 실전반':'#c9a86a'};
-  const EVENTS={1:['리치온 인테리어','공간가치'],2:['Pre리치온','투자원칙'],5:['리치온 스터디','현금흐름'],6:['무료 브리핑','시장동향'],7:['재개발 중급반','입지분석'],8:['리치온 인테리어','공간가치'],9:['Pre리치온','갭투자'],12:['리치온 스터디','갭투자'],13:['무료 브리핑','정책·금리'],14:['재개발 중급반','서울 초기재개발'],15:['리치온 인테리어','수익률 설계'],16:['Pre리치온','시장구조'],19:['리치온 스터디','경매'],20:['무료 브리핑','수도권 흐름'],21:['재개발 중급반','재건축 체크포인트'],22:['리치온 인테리어','공간가치'],23:['Pre리치온','서울 초기재개발'],26:['리치온 스터디','물건 검증'],27:['무료 브리핑','월간 정리'],28:['재개발 중급반','지역 분석'],29:['리치온 인테리어','실전 사례'],30:['청약 실전반','오픈 예정']};
-  const OPEN_EVENTS=new Set(['무료 브리핑','Pre리치온','리치온 스터디']);
-  const FIRST_DOW=3, DAYS=31;
-  const legend=document.getElementById('calLegend');
-  Object.entries(CATS).forEach(([k,c])=>legend.insertAdjacentHTML('beforeend',`<span><i style="background:${c}"></i>${k}</span>`));
-  const grid=document.getElementById('calGrid');
-  const list=document.getElementById('calList');
-  const now=new Date();
-  const isCurrentMonth=now.getFullYear()===CAL_YEAR&&now.getMonth()===CAL_MONTH;
-  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach((d,i)=>grid.insertAdjacentHTML('beforeend',`<div class="cal-dow ${i===0?'sun':''}${i===6?'sat':''}">${d}</div>`));
-  for(let i=0;i<FIRST_DOW;i++){const prev=31-(FIRST_DOW-1-i);grid.insertAdjacentHTML('beforeend',`<div class="cal-cell muted"><div class="d">${prev}</div></div>`)}
-  for(let d=1;d<=DAYS;d++){
-    let ev='';
-    const today=isCurrentMonth&&now.getDate()===d?' today':'';
-    if(EVENTS[d]){
-      const c=EVENTS[d][0],sub=EVENTS[d][1],open=OPEN_EVENTS.has(c);
-      ev=`<div class="cal-ev" style="background:${CATS[c]}">${c}${sub?`<small>${sub}</small>`:''}</div>`;
-      list.insertAdjacentHTML('beforeend',`<div class="cal-list-item"><i style="background:${CATS[c]}"></i><div><b>${d}일 · ${c}${open?' · 모집중':''}</b><span>${sub||'정규 일정'}</span></div></div>`);
-    }
-    grid.insertAdjacentHTML('beforeend',`<div class="cal-cell${today}"><div class="d">${d}</div>${ev}</div>`);
-  }
-  const trail=(7-((FIRST_DOW+DAYS)%7))%7;
-  for(let i=1;i<=trail;i++)grid.insertAdjacentHTML('beforeend',`<div class="cal-cell muted"><div class="d">${i}</div></div>`);
 </script>
 
 
@@ -600,5 +574,17 @@
     els.forEach(function(el,i){el.style.transitionDelay=(i%4*70)+'ms';io.observe(el);});
   })();
 </script>
+
+<div class="ctabar">
+  <div class="ctabar-in">
+    <div class="cb-txt">
+      <span class="cb-title">리치온 정규 강의, 지금 신청하세요</span>
+      <span class="cb-sub">입문부터 청약·인테리어까지 · 원하는 과정 선택</span>
+    </div>
+    <div class="cb-btns">
+      <a class="cb-apply" href="apply.html">강의 신청하기 →</a>
+    </div>
+  </div>
+</div>
 </body>
 </html>

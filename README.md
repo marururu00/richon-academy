@@ -1,18 +1,22 @@
-# 리치온 아카데미 (RICHON Academy) — 홈페이지
+# 리치온 아카데미 홈페이지 (무료 브리핑 제외판)
 
-## 파일 구성
-```
-index.html                ← GitHub Pages 첫 화면용 (richon-homepage.html 과 동일 내용)
-richon-homepage.html      ← 메인 (홈)
-richon-briefing.html      ← 무료 브리핑 다시보기
-richon-apply-ver5.html    ← 강의 신청/결제
-google-apps-script/richon-apps-script.gs  ← 신청 자동 안내메일(선택)
-```
-HTML 파일은 모두 **같은 폴더**에 두어야 링크가 연결됩니다.
+무료 브리핑 · 리치온 캘린더 모두 제거됨
 
-## 배포 전 교체
-`{{구글폼URL}}` `{{결제링크URL}}` `{{입금계좌}}` `{{블로그URL}}` `{{카페URL}}` `{{유튜브URL}}` `{{오픈채팅URL}}` `{{카톡상담URL}}`
+| 파일 | 역할 |
+|---|---|
+| index.html | 메인 홈 |
+| apply.html | 강의신청 (5개 과정: Pre리치온 / 스터디 / 재개발중급반 / 인테리어 / 청약) |
+| CNAME | richonacademy.com 연결 |
+| richon-apps-script.gs | (선택) 구글폼 자동 안내메일 — Apps Script에 붙여넣는 용도 |
 
-- 가격: `richon-apply-ver5.html` 의 `COURSES` → `price`
-- 일정: `richon-homepage.html` 하단 `EVENTS`
-- 브리핑 목록: `richon-briefing.html` 하단 `briefingVideos`
+briefing.html 은 들어있지 않습니다. 이 버전을 올릴 경우 저장소에 briefing.html 이 남아있지 않은지 확인하세요.
+
+## 제거된 항목
+- 상단 공지바 / 히어로·CTA·플로팅바의 브리핑 버튼
+- 프로그램 카드 중 '무료 브리핑'
+- 신청페이지의 브리핑 칩·이미지 15장·다시보기 안내박스 (파일 1.5MB 감소)
+- 홈의 '리치온 캘린더' 섹션 전체
+- 기본 선택 과정: 무료 브리핑 → Pre리치온
+
+## 배포 전 교체할 값
+{{구글폼URL}} {{결제링크URL}} {{입금계좌}} {{블로그URL}} {{카페URL}} {{유튜브URL}} {{오픈채팅URL}} {{카톡상담URL}}
